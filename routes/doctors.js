@@ -1,23 +1,16 @@
-/**
- * Created with JetBrains WebStorm.
- * User: guola
- * Date: 12-9-28
- * Time: 上午10:38
- * To change this template use File | Settings | File Templates.
- */
-
-var db = require('../db');
+/*var db = require('../db');
 var doctors = db.get('doctors');
 doctors.property('id', {identifier: true});
 doctors.property('username', {unique: true});
 doctors.property('email', {index: true, email: true});
 doctors.property('password', {});
+*/
 
 
 
 
 exports.index = function (req, res, next) {
-    res.render('doctors', { title: '医生注册' });
+    res.render('doctors', { title: '用户注册' });
 };
 
 
@@ -38,6 +31,17 @@ exports.list = function (req, res, next) {
 exports.add=function (req, res,next){
     console.log("POST: ");
     console.log(req.body);
+    return res.send({ret:true,msg:'恭喜您成功注册',data:req.body});
+};
+
+exports.login=function (req,res,next)
+{
+    console.log(req.body);
+}
+/*
+exports.add=function (req, res,next){
+    console.log("POST: ");
+    console.log(req.body);
     doctors.create(
         {username: req.body.username, email: req.body.email,password:req.body.password},
         function(err, user){
@@ -48,8 +52,8 @@ exports.add=function (req, res,next){
             }
             else
             {
-                console.log({ret:false,msg:'请修改医生昵称',data:err});
-                return res.send({ret:false,msg:'请修改医生昵称',data:err});
+                console.log({ret:false,msg:'请修改用户昵称',data:err});
+                return res.send({ret:false,msg:'请修改用户昵称',data:err});
             }
         });
 };
@@ -153,3 +157,4 @@ exports.usernameIsExist=function (req,res,next)
 
 
 }
+*/

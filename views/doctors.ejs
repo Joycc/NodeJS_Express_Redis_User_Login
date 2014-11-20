@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
-        医生管理
+        用户管理
         </title>
         <link rel="stylesheet" href="/stylesheets/jquery.mobile-1.1.1.min.css" />
         <style>
@@ -92,17 +92,17 @@
         <!-- Home -->
 <! ----------------------------------------------------------------------------------------------------------------- !>
         <div data-role="page" id="doctorsPage">
-            <div data-theme="a" data-role="header">
+            <!--<div data-theme="a" data-role="header">
                 <h3>
-                    医生列表
+                    用户列表
                 </h3>
-            </div>
+            </div>-->
             <div data-role="content">
             <ul data-role="listview" data-inset="true"  id="doctorslist">
             </ul>
 
-            <a href="#PageReg"   data-role="button" data-theme="a">医生注册</a>
-            <a href="#PageLogin" data-role="button" data-theme="a">医生登陆</a>
+            <a href="#PageReg"   data-role="button" data-theme="a">用户注册</a>
+            <a href="#PageLogin" data-role="button" data-theme="a">用户登陆</a>
 
             </div>
         </div>
@@ -120,7 +120,7 @@
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup">
                         <label for="textinput1">
-                            医生昵称
+                            用户昵称
                         </label>
                         <input name="PageReg-name" id="PageReg-username" placeholder="" value="d00" type="text">
                         <span id="PageReg-username-state"></span>
@@ -129,9 +129,9 @@
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup">
                         <label for="textinput2">
-                            电子邮件
+                            家庭地位
                         </label>
-                        <input name="PageReg-email" id="PageReg-email" placeholder="" value="d00@doctor.com" type="email">
+                        <input name="PageReg-email" id="PageReg-email" placeholder="" value="爸爸" type="email">
                     </fieldset>
                 </div>
                 <div data-role="fieldcontain">
@@ -150,7 +150,7 @@
         <div data-role="page" id="PageLogin">
             <div data-theme="a" data-role="header">
                 <h3>
-                 医生登陆
+                 用户登陆
                 </h3>
             </div>
 
@@ -159,7 +159,7 @@
                     <input   name= "Page-info-id "   type='hidden'   value='' />
                     <fieldset data-role="controlgroup">
                         <label for="textinput1">
-                            医生昵称
+                            用户昵称
                         </label>
                         <input name="PageLogin-username" id="PageLogin-username" placeholder="" value="D00" type="text">
                     </fieldset>

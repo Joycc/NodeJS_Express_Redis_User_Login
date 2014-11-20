@@ -42,15 +42,15 @@ var router = urlrouter(function (app) {
 
 //医生数据处理部分 Restful 处理
 
-    app.get('/doctors',doctors.list );//医生列表
-    app.get('/doctors/:id',doctors.doctor);//医生id查询
+    //app.get('/doctors',doctors.list );//医生列表
+    //app.get('/doctors/:id',doctors.doctor);//医生id查询
 
     app.post('/doctors',doctors.add );//医生注册
-    app.put('/doctors/:username',doctors.update); //医生更新
-    app.delete('/doctors/:username',doctors.delete);//医生删除
+    //app.put('/doctors/:username',doctors.update); //医生更新
+    //app.delete('/doctors/:username',doctors.delete);//医生删除
 
     app.post('/doctors/login',doctors.login);//医生登录
-    app.post('/doctors/isexist',doctors.usernameIsExist); //判断医生用户名是否已经注册
+    //app.post('/doctors/isexist',doctors.usernameIsExist); //判断医生用户名是否已经注册
 
     app.get('/tags',tags.index);
 
