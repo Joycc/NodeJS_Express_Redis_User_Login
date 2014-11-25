@@ -1,13 +1,7 @@
-/*var db = require('../db');
-var doctors = db.get('doctors');
-doctors.property('id', {identifier: true});
-doctors.property('username', {unique: true});
-doctors.property('email', {index: true, email: true});
-doctors.property('password', {});
-*/
+var fs = require('fs');
+var db = require('./db');
 
-
-
+var dataLine = fs.readFileSync('user.db', 'utf-8').split('\n');
 
 exports.index = function (req, res, next) {
     res.render('doctors', { title: '用户注册' });
@@ -28,16 +22,42 @@ exports.list = function (req, res, next) {
 
 };
 
-exports.add=function (req, res,next){
-    console.log("POST: ");
-    console.log(req.body);
-    return res.send({ret:true,msg:'恭喜您成功注册',data:req.body});
+
+exports.add = function (req, res,next){
+	if(db.add(dataLine, req.body.username)){
+			buffer = req.body.username + ','+ req.body.position + ',' + req.body.password;
+			fbuffer = buffer + '\n';
+			console.log(buffer);
+			fs.appendFileSync('user.db', fbuffer, 'utf-8');
+			dataLine.push(buffer);
+			return res.send({ret:true,msg:'恭喜您成功注册',data:req.body});
+	}
+	else{
+			console.log({ret:false,msg:'请修改用户昵称'});
+            return res.send({ret:false,msg:'请修改用户昵称',});
+    }
 };
 
-exports.login=function (req,res,next)
-{
+
+exports.login = function (req,res,next) {
     console.log(req.body);
+	var result = db.loginOK(dataLine, req.body.username, req.body.password);
+	if(result){
+				console.log({ret:true,msg:'成功登陆',data:result});
+				req.session.username = req.body.username;
+				return res.send({ret:true,msg:'成功登陆',data:req.body.username});
+    }
+    else{
+                console.log({ret:false,msg:'请检查用户名和密码'});
+                return res.send({ret:false,msg:'请检查用户名和密码'});
+        }
+};
+
+exports.logout = function (req, res){
+		req.session.username = '';
+		res.redirect('/');
 }
+
 /*
 exports.add=function (req, res,next){
     console.log("POST: ");

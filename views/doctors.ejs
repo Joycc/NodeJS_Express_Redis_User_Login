@@ -58,7 +58,7 @@
          {
          	$.mobile.showPageLoadingMsg();
 
-         	$.post('/doctors',{username:$('#PageReg-username').val(),email:$('#PageReg-email').val(),password:$('#PageReg-password').val()},function(data){
+			$.post('/doctors',{username:$('#PageReg-username').val(),position:$('#PageReg-position').val(),password:$('#PageReg-password').val()},function(data){
          		if(data.ret)
          		{
          			alert(data.msg);
@@ -92,11 +92,11 @@
         <!-- Home -->
 <! ----------------------------------------------------------------------------------------------------------------- !>
         <div data-role="page" id="doctorsPage">
-            <!--<div data-theme="a" data-role="header">
+            <div data-theme="a" data-role="header">
                 <h3>
-                    用户列表
+                    牛逼的智能路由
                 </h3>
-            </div>-->
+            </div>
             <div data-role="content">
             <ul data-role="listview" data-inset="true"  id="doctorslist">
             </ul>
@@ -131,7 +131,7 @@
                         <label for="textinput2">
                             家庭地位
                         </label>
-                        <input name="PageReg-email" id="PageReg-email" placeholder="" value="爸爸" type="email">
+                        <input name="PageReg-position" id="PageReg-position" placeholder="" value="爸爸" type="text">
                     </fieldset>
                 </div>
                 <div data-role="fieldcontain">
@@ -147,7 +147,7 @@
         </div>
 
 <! ---------------------------------------------------PageLogin-------------------------------------------------------------- !>
-        <div data-role="page" id="PageLogin">
+        <div data-role="page" data-back-btn-text="返回" data-add-back-btn="true" id="PageLogin">
             <div data-theme="a" data-role="header">
                 <h3>
                  用户登陆
