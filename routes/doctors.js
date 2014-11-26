@@ -1,10 +1,11 @@
 var fs = require('fs');
 var db = require('./db');
 
-var dataLine = fs.readFileSync('user.db', 'utf-8').split('\n');
+var dataLine = fs.readFileSync('./user.db', 'utf-8').split('\n');
+var userSession;
 
 exports.index = function (req, res, next) {
-    res.render('doctors', { title: '用户注册' });
+        res.render('doctors', { title: '用户注册' });
 };
 
 
@@ -28,7 +29,7 @@ exports.add = function (req, res,next){
 			buffer = req.body.username + ','+ req.body.position + ',' + req.body.password;
 			fbuffer = buffer + '\n';
 			console.log(buffer);
-			fs.appendFileSync('user.db', fbuffer, 'utf-8');
+			fs.appendFileSync('./user.db', fbuffer, 'utf-8');
 			dataLine.push(buffer);
 			return res.send({ret:true,msg:'恭喜您成功注册',data:req.body});
 	}
@@ -41,15 +42,18 @@ exports.add = function (req, res,next){
 
 exports.login = function (req,res,next) {
     console.log(req.body);
-	var result = db.loginOK(dataLine, req.body.username, req.body.password);
-	if(result){
-				console.log({ret:true,msg:'成功登陆',data:result});
-				req.session.username = req.body.username;
-				return res.send({ret:true,msg:'成功登陆',data:req.body.username});
+    var result = db.loginOK(dataLine, req.body.username, req.body.password);
+    if(result){
+	console.log({ret:true,msg:'成功登陆',data:result});
+	//req.session.key获取对应的value
+	if (req.session.views){
+	    userSession = req.session.views;
+	}
+	return res.send({ret:true,msg:'成功登陆',data:req.body.username});
     }
     else{
-                console.log({ret:false,msg:'请检查用户名和密码'});
-                return res.send({ret:false,msg:'请检查用户名和密码'});
+         console.log({ret:false,msg:'请检查用户名和密码'});
+         return res.send({ret:false,msg:'请检查用户名和密码'});
         }
 };
 

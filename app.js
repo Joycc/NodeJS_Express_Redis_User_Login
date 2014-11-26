@@ -35,21 +35,21 @@ var doctors = require('./routes/doctors');
 var router = urlrouter(function (app) {
 
 //整体URL流程处理
-    app.get('/', doctors.index);
+app.get('/', doctors.index);
 
 //用户数据处理部分 Restful 处理
 
-    //app.get('/doctors',doctors.list );//用户列表
-    //app.get('/doctors/:id',doctors.doctor);//用户id查询
+//app.get('/doctors',doctors.list );//用户列表
+//app.get('/doctors/:id',doctors.doctor);//用户id查询
 
-    app.post('/doctors',doctors.add );//用户注册
-    //app.put('/doctors/:username',doctors.update); //用户更新
-    //app.delete('/doctors/:username',doctors.delete);//用户删除
+app.post('/doctors',doctors.add );//用户注册
+//app.put('/doctors/:username',doctors.update); //用户更新
+//app.delete('/doctors/:username',doctors.delete);//用户删除
 
-    app.post('/doctors/login',doctors.login);//用户登录
-    //app.post('/doctors/isexist',doctors.usernameIsExist); //判断用户用户名是否已经注册
+app.post('/doctors/login',doctors.login);//用户登录
+//app.post('/doctors/isexist',doctors.usernameIsExist); //判断用户用户名是否已经注册
 
-    app.get('/tags',tags.index);
+app.get('/tags',tags.index);
 
 });
 app.use(router);

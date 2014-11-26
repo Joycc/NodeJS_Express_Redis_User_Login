@@ -1,12 +1,3 @@
-var sqlite = require("sqlite3").verbose();
-
-exports.create = function(){
-		var db = new sqlite3.Database('use.sqlite3', createTable);
-		
-
-
-
-
 exports.all = function (data){
 		var userNames = new Array();
 		for (var l=0;l<data.length;l++){
